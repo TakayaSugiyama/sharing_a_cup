@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2019_07_02_213707) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
-    belongs_to :user 
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -31,7 +30,6 @@ ActiveRecord::Schema.define(version: 2019_07_02_213707) do
     t.string "image_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    has_many :post
   end
 
 end
