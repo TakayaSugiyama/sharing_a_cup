@@ -1,7 +1,7 @@
 <h1 class = "mt-3">新規投稿作成</h1>
 <div class = "row">
-    <div class = "form col-6">
-        <%= form_with(model: @user, local: true,url: "/posts") do |f| %>
+    <div class = "mt-4 form col-6">
+        <%= form_with(model: @post, local: true) do |f| %>
           <div class = "form-group">
              <%= f.label :title, "タイトル" %>
              <%= f.text_field :title, class:"form-control" %>
@@ -18,7 +18,9 @@
               <%= f.label :review, "レビュー" %>
               <%= f.text_area :review, class: "form-control",size: "20x10"%>
           </div>
-          <%= f.submit "投稿する" , class: "btn btn-primary"%>
+          <div>
+            <%= f.submit "投稿する" , class: "btn btn-primary"%>
+          </div>
         <% end %>
     </div>
 </div>

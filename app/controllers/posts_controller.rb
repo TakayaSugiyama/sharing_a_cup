@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(posts_params)
+    @post = current_user.posts.build(post_params)
     if @post.save 
       flash[:success] = "投稿に成功しました。"
       redirect_to  posts_path
@@ -27,8 +27,8 @@ class PostsController < ApplicationController
   end
   
   private 
-    def posts_params
-       params.require(:post).permit(:title,:product_name,:price,:review)
+    def post_params 
+      params.require(:post).permit(:title,:product_name,:price,:review)
     end
     
 end

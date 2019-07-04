@@ -25,10 +25,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save 
-      if !@user.image_name?
-        @user.image_name.url =  "/uploads/user/image_name/default.png"
-      end
       flash[:success] = "登録に成功しました。"
+      session[:user_id] = @user.id   #ログインする
       redirect_to @user 
     else 
       flash.now[:danger] = "登録に失敗しました。"
