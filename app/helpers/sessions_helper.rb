@@ -9,9 +9,5 @@ module SessionsHelper
        @current_user ||= User.find_by(id: session[:user_id])
    end
    
-   def auth_logined_user 
-       if !current_user 
-           return false
-       end
-   end
+   
 end

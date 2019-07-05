@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :auth_logined_user,only: [:show,:edit,:update]
+  
   def show
     @user = User.find(params[:id])
   end
@@ -32,10 +34,6 @@ class UsersController < ApplicationController
       flash.now[:danger] = "登録に失敗しました。"
       render "users/new"
     end
-  end
-  
-  def login_form
-    @user = User.new
   end
   
   
