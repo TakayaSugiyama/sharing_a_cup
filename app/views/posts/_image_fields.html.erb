@@ -1,0 +1,9 @@
+<div class="nested-fields">
+  <div class="field">
+    <%= f.label :image_name,"画像" %>
+    <br/>
+    <%= f.file_field :image_name %>
+  </div>
+
+  <%= link_to_remove_association "remove image", f , class: "btn btn-info mt-2 mb-3" %>
+</div>

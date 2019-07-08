@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     
     # ログインユーザーのみ許可する。
     def auth_logined_user 
-        if  session[:user_id] == nil 
+        if  !current_user
            flash[:danger] = "許可がありません。ログインが必要です。"
            redirect_to root_url
         end
