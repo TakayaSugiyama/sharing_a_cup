@@ -1,2 +1,34 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class = "posts-wrapper">
+   <% @posts.each do |post| %>
+     <div class = "mt-4 mb-4 row posts">
+         <!--ユーザ情報-->
+         <div>
+            <div class = "col-md-6">
+               <%= image_tag post.user.image_name.url,class:"user-image-index"%>
+               <h2><%= link_to  post.user.name, user_path(post.user.id) %></h2>
+            </div>
+            <div>
+               <% if post.user == current_user %>
+                 <div class = "mt-4">
+                    <%= link_to "編集",edit_post_path(post),class:"btn btn-success" %>
+                    <%= link_to "削除",post,method: :delete,data: {confirm: "本当に投稿を削除しますか?"}, class:"btn btn-danger" %>
+                 </div>
+               <% end %>
+               <div>
+                  
+               </div>
+            </div>
+         </div>
+         <!--投稿情報-->
+         <div class = "col-md-9">
+            <% if post.images.present?  %>
+               <%= image_tag  post.images[0].image_name.url ,alt: "投稿画像",class:"img-fluid" %>
+           <% else %>
+              <%= image_tag "top1.jpg" ,alt: "投稿画像",class:"img-fluid" %>
+           <% end %>
+           <h1 class = "mt-2"><%= post.product_name %></h1>
+         </div>
+     </div>
+     <hr>
+   <% end %>
+</div>

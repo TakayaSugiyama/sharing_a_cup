@@ -35,7 +35,7 @@ footer {
 /* /   home#top */
 .top {
     background:url("top1.jpg");
-    padding:300px 0;
+    padding:200px 0;
     background-size:cover;
     color:#fff;
     h1{
@@ -45,5 +45,14 @@ footer {
     h3{
         text-shadow:0 0 3px #000;
     }
+}
+
+/* /posts  posts#index */
+.user-image-index {
+     width:200px;
+    height:200px;
+    border-radius:50%;
+    box-shadow:0 0 6px rgba(0,0,0,0.5);
+    margin:50px 0;
 }
 

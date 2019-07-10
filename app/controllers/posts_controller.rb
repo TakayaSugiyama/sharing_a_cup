@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :auth_logined_user , only: [:new,:update,:edit,:create]
   
   def index
+    @posts = Post.all.reverse
   end
 
   def show
@@ -28,6 +29,12 @@ class PostsController < ApplicationController
       flash.now[:danger] = "投稿に失敗しました。"
       render "posts/new"
     end
+  end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_url,success: "削除しました。"
   end
   
   private 

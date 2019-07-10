@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
     belongs_to :user
-    has_many :images
+    has_many :images, dependent: :destroy
     accepts_nested_attributes_for :images, reject_if: :all_blank, allow_destroy: true
     #バリデーション
     validates :product_name ,presence: true,length:{maximum:25}
