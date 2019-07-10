@@ -12,8 +12,6 @@
  *
  */
 @import "bootstrap";
-@import "slick-theme";
-@import "slick";
 
 footer {
     background:#F6F6F6;
@@ -32,5 +30,20 @@ footer {
 
 .user-profile {
     margin:0 auto;
+}
+
+/* /   home#top */
+.top {
+    background:url("top1.jpg");
+    padding:300px 0;
+    background-size:cover;
+    color:#fff;
+    h1{
+        font-size:150px;
+        text-shadow:0 0 3px #000;
+    }
+    h3{
+        text-shadow:0 0 3px #000;
+    }
 }
 
