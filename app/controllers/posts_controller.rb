@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :auth_logined_user , only: [:new,:update,:edit,:create]
+  
   def index
   end
 
