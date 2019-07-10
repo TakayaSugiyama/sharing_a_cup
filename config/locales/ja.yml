@@ -206,6 +206,7 @@ ja:
     pm: 午後
   models:
     post: 投稿
+    user: ユーザー
   attributes:
     post:
     id: ID
@@ -215,14 +216,9 @@ ja:
     review: レビュー
     created_at: 作成日時
     updated_at:: 更新日時
-  models:
-    user: ユーザー
-  attributes:
-    id: ID
     name: 名前
     email: メールアドレス
     password_digest: パスワード
     image_name: 画像
-    created_at: 作成日時
-    updated_at:: 更新日時
+  
     
