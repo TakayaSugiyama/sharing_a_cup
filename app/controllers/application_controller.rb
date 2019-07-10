@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
+    include FavoritesHelper
+    
     
     # ログインユーザーのみ許可する。
     def auth_logined_user 

@@ -15,7 +15,17 @@
                  </div>
                <% end %>
                <div>
-                  <i class="fas fa-heart"></i>
+                  <% if like?(post) %>
+                     <%= link_to favorite_path(post), method: :delete, remote: true do %>
+                        <i class="fas fa-heart" id = "like"></i>
+                     <% end %>
+                     <span><%= counts_likes(post) %></span>
+                  <% else %>
+                     <%= link_to favorite_path(post), method: :post, remote: true  do %>
+                        <i class="fas fa-heart" id = "unlike"></i>
+                     <% end %>
+                      <span><%= counts_likes(post) %></span>
+                  <% end %>
                </div>
             </div>
          </div>

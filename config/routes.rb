@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :favorites, only: [:destroy]
+  post "favorites/:id" ,to: "favorites#create"
   root "home#top"
   get 'signup',to: "users#new"
   resources :users,only: [:show,:edit,:create,:destroy,:update]
