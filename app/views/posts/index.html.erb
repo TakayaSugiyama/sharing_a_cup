@@ -16,7 +16,7 @@
                        <%= link_to "削除",post,method: :delete,data: {confirm: "本当に投稿を削除しますか?"}, class:"btn btn-danger" %>
                     </div>
                   <% end %>
-                     <div>
+                  <div>
                      <% if like?(post) %>
                         <%= link_to favorite_path(post), method: :delete, remote: true do %>
                            <i class="fas fa-heart" id = "like"></i>

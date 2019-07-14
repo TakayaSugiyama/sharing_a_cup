@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = Post.where(user_id: params[:id])
   end
 
   def edit
@@ -37,6 +38,11 @@ class UsersController < ApplicationController
     end
   end
   
+  
+  def like 
+    @user = User.find(params[:id])
+    @likes = @user.favorites.reverse
+  end
   
   
   private 

@@ -15,10 +15,10 @@
         <% end %>
         <ul class = "nav nav-tabs user-options">
             <li class = "nav-item">
-               <%= link_to "#{@user.name}の投稿",user_path(@user), class: "nav-link active" %>
+               <%= link_to "#{@user.name}の投稿",user_path(@user), class: "nav-link" %>
             </li>
             <li class = "nav-item">
-                <%= link_to "飲みたいをした投稿",user_likes_path(@user),class: "nav-link" %>
+                <%= link_to "飲みたいをした投稿",user_likes_path(@user),class: "nav-link active" %>
             </li>
             <li class = "nav-item">
                 <%= link_to "#{@user.name}のコメント",user_path(@user), class: "nav-link" %>
@@ -29,40 +29,40 @@
         </ul>
         <!--ここからユーザーの投稿一覧-->
         <div class = "user-show">
-            <% @posts.each do |post|%>
+            <% @likes.each do |like|%>
               <div class = "row border mt-2 mb-2">
                   <div class = "col-md-4">
                       <!--ユーザーの画像-->
-                      <% if post.user.image_name? %>
-                         <%= image_tag post.user.image_name.url,class: "user-image-index img-fluid" %>
+                      <% if like.post.user.image_name? %>
+                         <%= image_tag like.post.user.image_name.url,class: "user-image-index img-fluid" %>
                       <% else %>
                          <%= image_tag "default.png" ,class: "user-image-index img-fluid" %>
                       <% end %>
                       <!--ユーザーのオプション-->
-                      <h2>投稿者: <%= link_to post.user.name , user_path(post.user) %></h2>
-                      <p><%= link_to  "詳細を見る",post_path(post) %></p>
+                      <h2>投稿者: <%= link_to like.post.user.name , user_path(like.post.user) %></h2>
+                      <p><%= link_to  "詳細を見る",post_path(like.post) %></p>
                       <!--ユーザーのオプションここまで-->
                       <!--投稿日時-->
-                      <p>投稿日: <%= post.created_at %></p>
+                      <p>投稿日: <%= like.post.created_at %></p>
                       <!--投稿日時ここまで-->
                       <!--飲みたいボタン-->
                     <div>
-                        <% if like?(post) %>
-                           <%= link_to favorite_path(post), method: :delete, remote: true do %>
+                        <% if like?(like.post.id) %>
+                           <%= link_to favorite_path(like.post), method: :delete, remote: true do %>
                               <i class="fas fa-heart" id = "like"></i>
                            <% end %>
-                           <span><%= counts_likes(post) %></span>
+                           <span><%= counts_likes(like.post.id) %></span>
                         <% else %>
-                            <%= link_to favorite_path(post), method: :post, remote: true  do %>
+                            <%= link_to favorite_path(like.post), method: :post, remote: true  do %>
                                <i class="fas fa-heart" id = "unlike"></i>
                            <% end %>
-                           <span><%= counts_likes(post) %></span>
+                           <span><%= counts_likes(like.post.id) %></span>
                         <% end %>
                     </div>
                     <!--飲みたいボタンここまで-->
                   </div>
                   <div class = "col-md-8">
-                      <%= image_tag post.images[0].image_name.url ,class: "img-thumbnail img-fluid" %>
+                      <%= image_tag like.post.images[0].image_name.url ,class: "img-thumbnail img-fluid" %>
                   </div>
               </div>
            <% end %>

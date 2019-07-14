@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "home#top"
   get 'signup',to: "users#new"
   resources :users,only: [:show,:edit,:create,:destroy,:update]
+  get "users/likes/:id" , to: "users#like", as: :user_likes
   resources :posts
   post "login",to: "sessions#create"
   post "logout",to: "sessions#destroy"
