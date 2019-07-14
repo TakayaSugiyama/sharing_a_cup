@@ -8,4 +8,5 @@ class Post < ApplicationRecord
     validates :title, presence:true,length:{maximum:30}
     validates :price, presence: true,numericality: :only_integer,length:{maximum:10}
     validates :review, length:{maximum:500},presence: true
+    
 end

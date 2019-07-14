@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :auth_logined_user,only: [:show,:edit,:update]
+  before_action :only_user, only: [:edit,:update]
   
   def show
     @user = User.find(params[:id])

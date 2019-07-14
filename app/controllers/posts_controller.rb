@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def edit
@@ -18,6 +19,14 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
+    
+    if @post.update(post_params)
+      flash[:success] = "投稿を更新しました。"
+      redirect_to post_url(@post)
+    else
+      render :edit
+    end
   end
 
   def create

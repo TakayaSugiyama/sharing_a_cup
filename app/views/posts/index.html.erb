@@ -1,43 +1,50 @@
-<div class = "posts-wrapper">
+<div class = "posts-wrapper row">
    <% @posts.each do |post| %>
-     <div class = "mt-4 mb-4 row posts">
-         <!--ユーザ情報-->
-         <div>
-            <div class = "col-md-6">
-               <%= image_tag post.user.image_name.url,class:"user-image-index"%>
-               <h2><%= link_to  post.user.name, user_path(post.user.id) %></h2>
-            </div>
-            <div>
-               <% if post.user == current_user %>
-                 <div class = "mt-4">
-                    <%= link_to "編集",edit_post_path(post),class:"btn btn-success" %>
-                    <%= link_to "削除",post,method: :delete,data: {confirm: "本当に投稿を削除しますか?"}, class:"btn btn-danger" %>
-                 </div>
+     <div class = "mt-4 mb-4 posts col-md-6">
+         <div class="row">
+            <div class = "col-6">
+               <% if post.user.image_name? %>
+                 <%= image_tag post.user.image_name.url,class:"user-image-index img-fluid"%>
+               <% else %>
+                 <%= image_tag "default.png" ,class: "user-image-index img-fluid" %>
                <% end %>
+               <h2><%= link_to  post.user.name, user_path(post.user.id) %></h2>
                <div>
-                  <% if like?(post) %>
-                     <%= link_to favorite_path(post), method: :delete, remote: true do %>
-                        <i class="fas fa-heart" id = "like"></i>
-                     <% end %>
-                     <span><%= counts_likes(post) %></span>
-                  <% else %>
-                     <%= link_to favorite_path(post), method: :post, remote: true  do %>
-                        <i class="fas fa-heart" id = "unlike"></i>
-                     <% end %>
-                      <span><%= counts_likes(post) %></span>
+                  <% if post.user == current_user %>
+                    <div class = "mt-4">
+                       <%= link_to "編集",edit_post_path(post),class:"btn btn-success" %>
+                       <%= link_to "削除",post,method: :delete,data: {confirm: "本当に投稿を削除しますか?"}, class:"btn btn-danger" %>
+                    </div>
                   <% end %>
+                     <div>
+                     <% if like?(post) %>
+                        <%= link_to favorite_path(post), method: :delete, remote: true do %>
+                           <i class="fas fa-heart" id = "like"></i>
+                        <% end %>
+                        <span><%= counts_likes(post) %></span>
+                     <% else %>
+                        <%= link_to favorite_path(post), method: :post, remote: true  do %>
+                           <i class="fas fa-heart" id = "unlike"></i>
+                        <% end %>
+                         <span><%= counts_likes(post) %></span>
+                     <% end %>
+                  </div>
                </div>
             </div>
+             <div class = "col-6">
+                <div class="sake-image">
+                  <% if post.images.present?  %>
+                     <%= image_tag  post.images[0].image_name.url ,alt: "投稿画像",class: "img-thumbnail img-fluid" %>
+                  <% else %>
+                     <h1>写真はありません。</h1>
+                  <% end %>
+               </div>
+               <h2 class = "mt-2">title : <%= post.title %></h2>
+               <%= link_to "詳細を見る", post_path(post) %>
+            </div>
          </div>
-         <!--投稿情報-->
-         <div class = "col-md-9">
-            <% if post.images.present?  %>
-               <%= image_tag  post.images[0].image_name.url ,alt: "投稿画像",class:"img-fluid" %>
-           <% else %>
-              <%= image_tag "top1.jpg" ,alt: "投稿画像",class:"img-fluid" %>
-           <% end %>
-           <h1 class = "mt-2"><%= post.product_name %></h1>
-         </div>
+
+
      </div>
      <hr>
    <% end %>

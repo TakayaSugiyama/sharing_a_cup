@@ -11,7 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
+
+
 @import "bootstrap";
+
 
 footer {
     background:#F6F6F6;
@@ -68,4 +72,8 @@ footer {
 
 #like {
     color:#FF00FF;
+}
+
+.sake-image {
+    min-height: 180px;
 }
