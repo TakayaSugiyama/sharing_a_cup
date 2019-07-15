@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments, only: [:destroy]
+  post "comments/:post_id" ,to: "comments#create"
   resources :favorites, only: [:destroy]
   post "favorites/:id" ,to: "favorites#create"
   root "home#top"

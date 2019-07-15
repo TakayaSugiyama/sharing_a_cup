@@ -1,4 +1,4 @@
-<h1 class = "text-center mt-3">Title : <%= @post.title %></h1>
+<h1 class = "text-center mt-3"><u>Title : <%= @post.title %></u></h1>
 <% if @post.images %>
       <div class = "row">
         <% @post.images.each do |image| %>
@@ -10,11 +10,62 @@
 <% end %>
 
 <div class = "text-center"> 
-    <h2 class = "mt-3">商品名: <%= @post.product_name %></h2>
+    <h2 class = "mt-3"><u>商品名:<%= @post.product_name %></u></h2>
     <div class = "review">
-        <%= @post.review  %>
+        <h2><u>Review</u></h2>
+        <div>
+            <%= @post.review %> 
+        </div>
     </div>
-    <h2 class = "text-center mt-4">コメント</h2>
+    <h2 class = "text-center mt-4"><u>コメント一覧</u></h2>
+    <!--新規コメント投稿フォーム-->
+      <div class = "mb-4 mt-4 comment-form">
+            <h3><u>新規コメント</u></h3>
+            <%= form_with(model: @comment, local: true,url: comment_path(@post.id) )do |f| %>
+               <div class = "form-group">
+                   <%= f.label :title, "タイトル" %>
+                   <%= f.text_field :title, class: "form-control" %>
+               </div>
+               <div class = "form-group">
+                   <%= f.label :comment ,"コメント" %>
+                   <%= f.text_area :comment, class: "form-control", rows: 4 %>
+               </div>
+               <%= f.submit "コメントする", class: "btn btn-primary" %>
+            <% end %>
+      </div>
+    <!--新規コメント投稿フォームここまで-->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>投稿者</th>
+                <th>タイトル</th>
+                <th>コメント</th>
+                <th>投稿日</th>
+            </tr>
+        </thead>
+        <tbody>
+           <% @post.comments.each do |comment| %>
+              <tr>
+                 <td><%= link_to  comment.user.name, user_path(comment.user) %></td>
+                 <td><%= comment.title %></td>
+                 <td>
+                     <!--文字列を整形-->
+                     <% comment_length = comment.comment.chars %>
+                     <% comment_length.each_slice(60).to_a.each do |text| %>
+                       <p><%= text.join %></p>  
+                     <% end %>
+                 </td>
+                 <td><%= comment.created_at %></td>
+                 <% if current_user.id = comment.user_id %>
+                 <td>
+                   <%= link_to "削除", comment_path(comment), method: :delete,data: {confirm: "削除しますか？"},class: "btn btn-danger" %>
+                 </td>
+                 <% end %>
+              </tr>
+            <% end %>
+        </tbody>
+     </table>
+    </div>
 </div>
 
 
