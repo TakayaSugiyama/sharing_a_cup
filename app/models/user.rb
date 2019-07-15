@@ -5,6 +5,6 @@ class User < ApplicationRecord
                      uniqueness: true
    has_secure_password
    has_many :posts,dependent: :destroy
-   has_many :favorites
-   has_many :comments
+   has_many :favorites,dependent: :destroy
+   has_many :comments,dependent: :destroy
 end

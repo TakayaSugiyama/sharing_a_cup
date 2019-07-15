@@ -36,7 +36,7 @@
                   <% if post.images.present?  %>
                      <%= image_tag  post.images[0].image_name.url ,alt: "投稿画像",class: "img-thumbnail img-fluid" %>
                   <% else %>
-                     <h1>写真はありません。</h1>
+                     <%= image_tag "https://placehold.jp/150x180.png" ,alt: "投稿画像",class: "img-thumbnail img-fluid" %>
                   <% end %>
                </div>
                <h2 class = "mt-2">title : <%= post.title %></h2>
