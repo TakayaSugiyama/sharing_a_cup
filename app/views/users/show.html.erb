@@ -62,7 +62,11 @@
                     <!--飲みたいボタンここまで-->
                   </div>
                   <div class = "col-md-8">
-                      <%= image_tag post.images[0].image_name.url ,class: "img-thumbnail img-fluid" %>
+                      <% if post.images[0].present?  %>
+                         <%= image_tag post.images[0].image_name.url ,class: "img-thumbnail img-fluid" %>
+                     <% else %>
+                         <%= image_tag "https://placehold.jp/400x400.png",class: "img-thumbnail img-fluid" %>
+                    <% end %>
                   </div>
               </div>
            <% end %>
