@@ -19,6 +19,18 @@ class CommentsController < ApplicationController
     redirect_to  post_url(@comment.post)
   end
   
+  def like 
+    @like = CommentFavorite.new(user_id: current_user.id, comment_id: params[:comment_id])
+    @like.save
+    redirect_to  user_comments_url(current_user)
+  end 
+  
+  def unlike 
+    @like = CommentFavorite.find_by(user_id: current_user,comment_id: params[:comment_id])
+    @like.destroy
+    redirect_to user_comments_url(current_user)
+  end
+  
   private 
   
   def comments_params 

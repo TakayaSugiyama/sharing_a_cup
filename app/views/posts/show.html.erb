@@ -61,7 +61,11 @@
                    <%= link_to "削除", comment_path(comment), method: :delete,data: {confirm: "削除しますか？"},class: "btn btn-danger" %>
                  </td>
                  <td>
-                    
+                   <% if liked?(comment) %>
+                     <%= link_to  "いいね済み!", unlike_comment_path(comment), method: :delete %>
+                   <% else %>
+                     <%= link_to "いいね", like_comment_path(comment), method: :post %>
+                   <% end %>
                  </td>
                  <% end %>
               </tr>

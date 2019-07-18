@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
     include FavoritesHelper
+    include CommentsHelper
     include UsersHelper
     
     

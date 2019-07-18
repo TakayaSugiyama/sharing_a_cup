@@ -44,6 +44,10 @@ class UsersController < ApplicationController
     @likes = @user.favorites.reverse
   end
   
+  def comment
+    @user = User.find(params[:id])
+    @comments = Comment.where(user_id: @user.id)
+  end
   
   private 
     def user_params 

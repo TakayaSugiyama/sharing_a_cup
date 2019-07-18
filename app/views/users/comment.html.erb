@@ -1,0 +1,51 @@
+<div>
+    <div class = "text-center">
+        <% if @user.image_name? %>
+           <%= image_tag @user.image_name.url ,alt: "ユーザー画像",class: "user-image text-center" %>
+        <% else %>
+           <%= image_tag "default.png" ,alt: "ユーザー画像",class: "user-image pull-center" %>
+        <% end %>
+    </div>
+    <h1 class = "text-center">
+        <%= @user.name %>
+        <% if @user.id == current_user.id  %>
+            <%= link_to edit_user_path(@user) do %>
+               <i class="fas fa-cogs text-dark"></i>
+            <% end %>
+        <% end %>
+    </h1>
+    <ul class = "nav nav-tabs user-options">
+        <li class = "nav-item">
+           <%= link_to "#{@user.name}の投稿",user_path(@user), class: "nav-link" %>
+        </li>
+        <li class = "nav-item">
+            <%= link_to "飲みたいをした投稿",user_likes_path(@user),class: "nav-link" %>
+        </li>
+        <li class = "nav-item">
+            <%= link_to "#{@user.name}のコメント",user_comments_path(@user), class: "nav-link active" %>
+        </li>
+        <li class = "nav-item">
+            <%= link_to "いいねをしたコメント",user_path(@user), class: "nav-link" %>
+        </li>
+    </ul>
+    <div>
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th>コメント</th>
+                    <th>投稿日</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% @comments.each do |comment| %>
+                    <tr>
+                        <td><%= comment.comment %></td>
+                        <td><%= comment.created_at %></td>
+                    </tr>
+                    <% end %>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
