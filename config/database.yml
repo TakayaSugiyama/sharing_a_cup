@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  addapter: postgresql
+  encoding: utf8
+  pool: 5
   database: sharing_a_cup_production
   username: sharing_a_cup
   password: <%= ENV['SHARING_A_CUP_DATABASE_PASSWORD'] %>
