@@ -8,9 +8,8 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = Favorite.new(user_id: current_user.id ,post_id: params[:id])
-    if @favorite.save
-      redirect_to posts_url
-    end
+    @favorite.save
+    redirect_to posts_url
   end
   
 end

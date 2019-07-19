@@ -2,7 +2,7 @@
    <% @posts.each do |post| %>
      <div class = "mt-4 mb-4 posts col-md-6">
          <div class="row">
-            <div class = "col-6">
+            <div class = "col-4">
                <% if post.user.image_name? %>
                  <%= image_tag post.user.image_name.url,class:"user-image-index img-fluid"%>
                <% else %>
@@ -23,7 +23,7 @@
                         <% end %>
                         <span><%= counts_likes(post) %></span>
                      <% else %>
-                        <%= link_to favorite_path(post), method: :post, remote: true  do %>
+                        <%= link_to favorite_path(post), method: :post, remote: true , id: "like-btn" do %>
                            <i class="fas fa-heart" id = "unlike"></i>
                         <% end %>
                          <span><%= counts_likes(post) %></span>
@@ -31,7 +31,7 @@
                   </div>
                </div>
             </div>
-             <div class = "col-6">
+             <div class = "col-8">
                 <div class="sake-image">
                   <% if post.images.present?  %>
                      <%= image_tag  post.images[0].image_name.url ,alt: "投稿画像",class: "img-thumbnail img-fluid" %>
@@ -43,8 +43,6 @@
                <%= link_to "詳細を見る", post_path(post) %>
             </div>
          </div>
-
-
      </div>
      <hr>
    <% end %>

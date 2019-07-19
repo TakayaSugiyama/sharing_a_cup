@@ -3,6 +3,7 @@ class Post < ApplicationRecord
     has_many :favorites,dependent: :destroy
     has_many :images, dependent: :destroy
     has_many :comments,dependent: :destroy
+    has_many :comment_favorites,dependent: :destroy
     accepts_nested_attributes_for :images, reject_if: :all_blank, allow_destroy: true
     #バリデーション
     validates :product_name ,presence: true,length:{maximum:25}
