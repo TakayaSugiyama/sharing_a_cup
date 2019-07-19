@@ -49,6 +49,12 @@ class UsersController < ApplicationController
     @comments = Comment.where(user_id: @user.id)
   end
   
+  
+  def like_comment 
+    @user = User.find(params[:id])
+    @comments = CommentFavorite.where(user_id: @user.id)
+  end 
+  
   private 
     def user_params 
       params.require(:user).permit(:name,:email,:password,:password_confirmation,:image_name)

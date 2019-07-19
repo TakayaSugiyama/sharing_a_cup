@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
     @comment.destroy 
     flash[:success] = "コメントを削除しました。"
     redirect_to  post_url(@comment.post)
@@ -27,8 +27,8 @@ class CommentsController < ApplicationController
   end 
   
   def unlike 
-     comment = Comment.find_by(id: params[:comment_id])
-    @like = CommentFavorite.find_by(user_id: current_user,comment_id: params[:comment_id],post_id: comment.post.id)
+    comment = Comment.find_by(id: params[:comment_id])
+    @like = CommentFavorite.find_by(user_id: current_user.id,comment_id: params[:comment_id],post_id: comment.post.id)
     @like.destroy
     redirect_to post_url(comment.post)
   end

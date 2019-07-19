@@ -62,9 +62,9 @@
                  </td>
                  <td>
                    <% if liked?(comment) %>
-                     <%= link_to  "いいね済み!", unlike_comment_path(comment), method: :delete %>
+                     <%= link_to  "いいね済み!", unlike_comment_path(comment), method: :delete, class: "btn btn-info" %>
                    <% else %>
-                     <%= link_to "いいね", like_comment_path(comment), method: :post %>
+                     <%= link_to "いいね", like_comment_path(comment), method: :post, class: "btn btn-success"  %>
                    <% end %>
                  </td>
                  <% end %>
