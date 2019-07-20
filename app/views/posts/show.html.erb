@@ -49,11 +49,7 @@
                  <td><%= link_to  comment.user.name, user_path(comment.user) %></td>
                  <td><%= comment.title %></td>
                  <td>
-                     <!--文字列を整形-->
-                     <% comment_length = comment.comment.chars %>
-                     <% comment_length.each_slice(60).to_a.each do |text| %>
-                       <p><%= text.join %></p>  
-                     <% end %>
+                    <p><%= comment.comment %></p>
                  </td>
                  <td><%= comment.created_at %></td>
                  <% if current_user.id = comment.user_id %>
