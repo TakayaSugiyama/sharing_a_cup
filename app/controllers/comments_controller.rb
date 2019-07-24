@@ -7,8 +7,9 @@ class CommentsController < ApplicationController
       flash["success"] = "コメントを作成しました。"
       redirect_to  post_url(@comment.post)
     else
-      flash["danger"]  = "コメントの作成に失敗しました。"
-      redirect_to root_url
+      @error_message = "投稿に失敗しました。"
+      @post = Post.find(params[:post_id])
+      render "posts/show"
     end
   end
 

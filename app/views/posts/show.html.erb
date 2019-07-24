@@ -17,10 +17,12 @@
             <%= @post.review %> 
         </div>
     </div>
-    <h2 class = "text-center mt-4"><u>コメント一覧</u></h2>
     <!--新規コメント投稿フォーム-->
       <div class = "mb-4 mt-4 comment-form">
             <h3><u>新規コメント</u></h3>
+            <!--エラーメッセージ-->
+            <%= render "layouts/error_messages", model: @comment %>
+            <!--エラーメッセージここまで-->
             <%= form_with(model: @comment, local: true,url: comment_path(@post.id) )do |f| %>
                <div class = "form-group">
                    <%= f.label :title, "タイトル" %>
@@ -34,6 +36,7 @@
             <% end %>
       </div>
     <!--新規コメント投稿フォームここまで-->
+    <h2 class = "text-center mt-4"><u>コメント一覧</u></h2>
     <table class="table table-striped">
         <thead>
             <tr>

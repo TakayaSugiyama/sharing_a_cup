@@ -207,6 +207,7 @@ ja:
   models:
     post: 投稿
     user: ユーザー
+    comment: コメント
   attributes:
     post:
     id: ID
@@ -220,5 +221,6 @@ ja:
     email: メールアドレス
     password_digest: パスワード
     image_name: 画像
+    comment: コメント
   
     
