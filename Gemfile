@@ -44,6 +44,7 @@ gem 'jquery-rails'
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'rmagick'
 
+gem 'dotenv-rails'
 gem 'fog-aws'
 
 gem "cocoon"
