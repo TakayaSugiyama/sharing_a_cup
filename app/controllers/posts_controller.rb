@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :auth_logined_user , only: [:new,:update,:edit,:create]
+  before_action :only_posted_user, only: [:edit,:update,:destroy]
   
   def index
     @posts = Post.all.reverse
@@ -51,6 +52,15 @@ class PostsController < ApplicationController
     def post_params 
       params.require(:post).permit(:title,:product_name,:price,:review,
           images_attributes: [:id, :image_name,:_destroy])
+    end
+    
+    def only_posted_user 
+      post = Post.find(params[:id])
+      user = post.user
+      if  user.id != current_user.id
+        flash[:danger] = "他人の投稿は編集できません。"
+        redirect_to posts_path
+      end
     end
     
 end
