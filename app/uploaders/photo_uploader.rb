@@ -41,11 +41,4 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   %w(jpg jpeg gif png)
   # end
 
-  def filename
-    if original_filename.present?
-      time = Time.now
-      name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
-      name.downcase
-    end
-  end
 end
