@@ -38,6 +38,9 @@ class PostsController < ApplicationController
       redirect_to  posts_path
     else 
       flash.now[:danger] = "投稿に失敗しました。"
+      #if (@post.images == nil)
+       @post.images.build
+      # end
       render "posts/new"
     end
   end
