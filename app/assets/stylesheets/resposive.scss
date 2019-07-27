@@ -20,7 +20,13 @@
     body {
         width:100%;
     }
-
-　　// sessions#new   login
-    
 } 
+
+@media(max-width: 480px){
+    .user-image{
+　      width: 60px;
+　      height: 60px;
+　      border-radius: 50%;
+　  }
+}
+

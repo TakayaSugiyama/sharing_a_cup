@@ -4,9 +4,9 @@
          <div class="row">
             <div class = "col-4">
                <% if post.user.image_name? %>
-                 <%= image_tag post.user.image_name.url,class:"user-image-index img-fluid"%>
+                 <%= image_tag post.user.image_name.url,class:"user-image img-fluid"%>
                <% else %>
-                 <%= image_tag "default.png" ,class: "user-image-index img-fluid" %>
+                 <%= image_tag "default.png" ,class: "user-image img-fluid" %>
                <% end %>
                <h2><%= link_to  post.user.name, user_path(post.user.id) %></h2>
                <div>
