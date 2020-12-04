@@ -50,6 +50,7 @@ gem 'fog-aws'
 gem "cocoon"
 
 gem "jquery-slick-rails"
+gem 'record_with_operator'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

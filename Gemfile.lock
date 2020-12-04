@@ -198,6 +198,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    record_with_operator (1.0.1)
+      activerecord
     regexp_parser (1.6.0)
     rmagick (4.0.0)
     ruby-vips (2.0.14)
@@ -284,6 +286,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.12)
   rails (~> 5.2.2)
+  record_with_operator
   rmagick
   sass-rails (~> 5.0)
   selenium-webdriver
